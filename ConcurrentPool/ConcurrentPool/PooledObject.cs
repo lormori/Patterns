@@ -2,7 +2,7 @@
 
 namespace Patterns
 {
-    public class PooledObject<T> : IDisposable
+    public class PooledObject<T> : IDisposable where T : IResettable
     {
         // -----------------------------------------------------------------
         // Data
@@ -15,15 +15,16 @@ namespace Patterns
         // -----------------------------------------------------------------
         public PooledObject( T inOnbject, ConcurrentPool<T> inConcurrentPool )
         {
-            mConcurrentPool = inConcurrentPool;
             mPooledObject = inOnbject;
+            mConcurrentPool = inConcurrentPool ?? throw new Exception("[Pooled Object] Concurrent Pool is null");
         }
 
         // -----------------------------------------------------------------
-        // IDisposable Interfact
+        // IDisposable Interface
         // -----------------------------------------------------------------
         public void Dispose()
         {
+            mPooledObject.Reset();
             mConcurrentPool.Return( this );   
         }
 

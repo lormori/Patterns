@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConcurrentPool\ConcurrentPool.cs" />
+    <Compile Include="ConcurrentPool\IResettable.cs" />
     <Compile Include="ConcurrentPool\PooledObject.cs" />
     <Compile Include="DummyClass.cs" />
     <Compile Include="Program.cs" />

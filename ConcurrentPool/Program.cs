@@ -8,6 +8,9 @@ namespace Patterns
 {
     public class Program
     {
+        // -----------------------------------------------------------------
+        // Test Program
+        // -----------------------------------------------------------------
         static void Main( string[] args )
         {
             ConcurrentPool<DummyClass> pool = new ConcurrentPool<DummyClass>( () => new DummyClass() );
@@ -16,15 +19,16 @@ namespace Patterns
             {
                 using( PooledObject<DummyClass> DummyClass = pool.Get() )
                 {
-                    Process( DummyClass.Value );
+                    ProcessDummy( DummyClass.Value );
                 }
             }
             );
         }
 
-        static void Process( DummyClass dummyClass )
+        // -----------------------------------------------------------------
+        static void ProcessDummy( DummyClass dummyClass )
         {
-            Console.WriteLine( "Processing Dummy Class" );
+            // Dummy operation
         }
     }
 }
